@@ -16,7 +16,6 @@ class CoinTracker {
 
   fetchData (currency) {
     let endpoint = `${API_BASE_ENDPOINT}/ticker/?convert=${currency}`
-    currency = currency.toLowerCase()
     let trackedCoinsSymbols = userData.coins.map(coin => coin.symbol)
 
     axios
@@ -31,7 +30,7 @@ class CoinTracker {
           if (coinData) {
             coin.boughtFor = coinData.boughtFor
             coin.amount = coinData.amount
-            coin.currentAmount = coin[`price_${currency}`] * coin.amount
+            coin.currentAmount = coin[`price_${currency.toLowerCase()}`] * coin.amount
             coin.profit = coin.currentAmount - coin.boughtFor
           }
         })
