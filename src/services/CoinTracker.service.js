@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 let API_BASE_ENDPOINT = 'https://api.coinmarketcap.com/v1'
 
 class CoinTracker {
@@ -6,12 +8,12 @@ class CoinTracker {
   }
 
   getCoinInfo () {
-    let endpoint = `${API_BASE_ENDPOINT}/ticker`
+    let endpoint = `${API_BASE_ENDPOINT}/ticker/`
 
-    return fetch(endpoint)
+    axios.get(endpoint)
       .then(response => {
-        console.log(response.json())
-        return response.json()
+        console.log(response.data)
+        return response.data
       })
       .catch(error => console.log(error))
   }
