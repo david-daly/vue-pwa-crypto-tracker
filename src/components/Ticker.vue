@@ -1,6 +1,8 @@
 <template>
     <main>
-       Ticker
+       <p v-for="coin of this.ticker.coins" :key="coin.id">
+         {{coin.id}} - {{coin.symbol}} - {{coin.price_usd}}
+       </p>
     </main>
 </template>
 
