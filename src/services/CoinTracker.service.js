@@ -2,6 +2,7 @@ import axios from 'axios'
 import * as userData from '../data/userData.json'
 
 let API_BASE_ENDPOINT = 'https://api.coinmarketcap.com/v1'
+let BASE_CURRENCY = 'EUR'
 
 class CoinTracker {
   constructor () {
@@ -10,26 +11,38 @@ class CoinTracker {
   }
 
   getCoinInfo () {
-    let endpoint = `${API_BASE_ENDPOINT}/ticker/`
+    this.fetchData(BASE_CURRENCY)
+  }
+
+  fetchData (currency) {
+    let endpoint = `${API_BASE_ENDPOINT}/ticker/?convert=${currency}`
+    currency = currency.toLowerCase()
     let trackedCoinsSymbols = userData.coins.map(coin => coin.symbol)
 
     axios
       .get(endpoint)
       .then(response => {
-        let res = response.data.filter(currency => {
-          return trackedCoinsSymbols.includes(currency.symbol)
+        let res = response.data.filter(c => {
+          return trackedCoinsSymbols.includes(c.symbol)
         })
 
-        // res.map(coin => {
-        //   console.log(coin)
-        //   if (userData.coins.find(coin.symbol)) {
-        //     console.log('test')
-        //   }
-        // });
+        res.map(coin => {
+          let coinData = userData.coins.find(userCoin => userCoin.symbol === coin.symbol)
+          if (coinData) {
+            coin.boughtFor = coinData.boughtFor
+            coin.amount = coinData.amount
+            coin.currentAmount = coin[`price_${currency}`] * coin.amount
+            coin.profit = coin.currentAmount - coin.boughtFor
+          }
+        })
 
         this.coins = res
       })
       .catch(error => console.log(error))
+  }
+
+  selectCurrency (currency) {
+    this.fetchData(currency)
   }
 }
 

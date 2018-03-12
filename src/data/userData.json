@@ -2,18 +2,18 @@
     "coins": [
         {
             "symbol": "BTC",
-            "amount": "0.1",
-            "boughtFor": "900"
+            "amount": 0.1,
+            "boughtFor": 900
         },
         {
             "symbol": "ETH",
-            "amount": "1.0",
-            "boughtFor": "750"
+            "amount": 1,
+            "boughtFor": 750
         },
         {
             "symbol": "ADA",
-            "amount": "100.0",
-            "boughtFor": "20"
+            "amount": 100.0,
+            "boughtFor": 20
         }
     ]
 }
