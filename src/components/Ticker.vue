@@ -1,7 +1,11 @@
 <template>
     <main>
        <p v-for="coin of this.ticker.coins" :key="coin.id">
-         {{coin.id}} - {{coin.symbol}} - {{coin.price_usd}}
+         {{coin.symbol}}<br>
+         €{{coin.price_eur}}<br>
+         €{{coin.boughtFor}}<br>
+         €{{coin.currentAmount}}<br>
+         €{{coin.profit}}<br>
        </p>
     </main>
 </template>
@@ -30,7 +34,7 @@ main {
     background-repeat: no-repeat;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
 
