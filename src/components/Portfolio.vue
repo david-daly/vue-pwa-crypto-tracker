@@ -68,7 +68,6 @@ export default {
 <style scoped>
 .section1 {
   width: 100%;
-  padding-top: 25px;
 
   display: flex;
   flex-direction: row;
