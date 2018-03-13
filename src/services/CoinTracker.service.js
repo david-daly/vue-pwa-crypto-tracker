@@ -30,8 +30,8 @@ class CoinTracker {
           if (coinData) {
             coin.boughtFor = coinData.boughtFor
             coin.amount = coinData.amount
-            coin.currentAmount = coin[`price_${currency.toLowerCase()}`] * coin.amount
-            coin.profit = coin.currentAmount - coin.boughtFor
+            coin.currentAmount = Math.round(coin[`price_${currency.toLowerCase()}`] * coin.amount)
+            coin.profit = Math.round(coin.currentAmount - coin.boughtFor)
           }
         })
 
