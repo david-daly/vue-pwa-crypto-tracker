@@ -1,6 +1,6 @@
 <template>
     <section>
-        <div class="totalProfit__value" :class="totalCSS">{{profit}}</div>
+        <div class="totalProfit__value" :class="totalCSS">{{profit | round}}</div>
             <div class="totalProfit__right">
             <div class="totalProfit__arrow">
                 (<img src="../assets/icons/down.svg" alt="low temperature"><span>5%</span>)

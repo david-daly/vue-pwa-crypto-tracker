@@ -2,11 +2,11 @@
     <section>
         <div class="totalBought">
             <img src="../assets/icons/totalbought.svg" alt="total bought">
-            <span class="totalBought__text">{{totalBought}}</span>
+            <span class="totalBought__text">{{totalBought | round}}</span>
         </div>
         <div class="totalValue">
             <img src="../assets/icons/totalvalue.svg" alt="total value">
-            <span class="totalValue__text">{{totalValue}}</span>
+            <span class="totalValue__text">{{totalValue | round}}</span>
         </div>
     </section>
 </template>

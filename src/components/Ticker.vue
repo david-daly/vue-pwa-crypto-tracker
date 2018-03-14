@@ -23,11 +23,11 @@
       >
         <template slot="items" slot-scope="props">
           <td>{{ props.item.symbol }}</td>
-          <td class="text-xs-right">{{ props.item.boughtFor }}</td>
-          <td class="text-xs-right">{{ props.item.price_eur }}</td>
-          <td class="text-xs-right">{{ props.item.amount }}</td>
-          <td class="text-xs-right">{{ props.item.currentAmount }}</td>
-          <td class="text-xs-right">{{ props.item.profit }}</td>
+          <td class="text-xs-right">{{ props.item.price_eur | round(2) }}</td>
+          <td class="text-xs-right">{{ props.item.boughtFor | round(2) }}</td>
+          <td class="text-xs-right">{{ props.item.amount | round(2) }}</td>
+          <td class="text-xs-right">{{ props.item.currentAmount | round(2) }}</td>
+          <td class="text-xs-right">{{ props.item.profit | round(2) }}</td>
         </template>
       </v-data-table>
     </main>
