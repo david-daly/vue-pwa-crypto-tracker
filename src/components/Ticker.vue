@@ -19,7 +19,7 @@
         :headers="headers"
         :items="this.ticker.coins"
         hide-actions
-        class="elevation-1"
+        class="elevation-1 currencies"
       >
         <template slot="items" slot-scope="props">
           <td>{{ props.item.symbol }}</td>
@@ -61,8 +61,8 @@ export default {
 <style scoped>
 main {
     color: black;
-    width: 100%;
-    height: 100%;
+    /* width: 100%; */
+    /* height: 100%; */
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -71,7 +71,7 @@ main {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-color: azure;
+    background-color: ccd2d0;
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 
@@ -81,6 +81,17 @@ main {
   justify-content: space-around;
   align-items: center;
   width: 100%;
+  height: 100%;
+  background-color: #429db9;
+  color: white;
+}
+
+@media screen and (min-width: 450px) {
+  main {
+    width: 660px;
+    height: 330px;
+    border-radius: 5px;
+  }
 }
 
 </style>
