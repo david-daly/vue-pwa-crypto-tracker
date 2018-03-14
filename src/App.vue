@@ -55,7 +55,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #484F60;
+  background-color: #ccd2d0;
 }
 
 </style>
