@@ -1,6 +1,6 @@
 <template>
     <main>
-      <div class="currencies">
+      <!-- <div class="currencies">
         <div>Symbol</div>
         <div>Price</div>
         <div>Bought</div>
@@ -14,7 +14,22 @@
         <div>€{{coin.boughtFor}}</div>
         <div>€{{coin.currentAmount}}</div>
         <div>€{{coin.profit}}</div>
-      </div>
+      </div> -->
+      <v-data-table
+        :headers="headers"
+        :items="this.ticker.coins"
+        hide-actions
+        dark
+        class="elevation-1"
+      >
+        <template slot="items" slot-scope="props">
+          <td>{{ props.item.symbol }}</td>
+          <td class="text-xs-right">{{ props.item.boughtFor }}</td>
+          <td class="text-xs-right">{{ props.item.price_eur }}</td>
+          <td class="text-xs-right">{{ props.item.currentAmount }}</td>
+          <td class="text-xs-right">{{ props.item.profit }}</td>
+        </template>
+      </v-data-table>
     </main>
 </template>
 
@@ -26,7 +41,19 @@ export default {
 
   data () {
     return {
-      ticker: new CoinTracker()
+      ticker: new CoinTracker(),
+      headers: [
+        {
+          text: 'Currency',
+          align: 'left',
+          sortable: false,
+          value: 'symbol'
+        },
+        { text: 'Price (EUR)', value: 'price_eur' },
+        { text: 'Bought For', value: 'boughtFor' },
+        { text: 'Current Value', value: 'currentAmount' },
+        { text: 'Profit', value: 'profit' }
+      ]
     }
   }
 }
