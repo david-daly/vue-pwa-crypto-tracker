@@ -25,6 +25,7 @@
           <td>{{ props.item.symbol }}</td>
           <td class="text-xs-right">{{ props.item.boughtFor }}</td>
           <td class="text-xs-right">{{ props.item.price_eur }}</td>
+          <td class="text-xs-right">{{ props.item.amount }}</td>
           <td class="text-xs-right">{{ props.item.currentAmount }}</td>
           <td class="text-xs-right">{{ props.item.profit }}</td>
         </template>
@@ -50,6 +51,7 @@ export default {
         },
         { text: 'Price (EUR)', value: 'price_eur' },
         { text: 'Bought For', value: 'boughtFor' },
+        { text: 'Amount Owned', value: 'amount' },
         { text: 'Current Value', value: 'currentAmount' },
         { text: 'Profit', value: 'profit' }
       ]
@@ -88,7 +90,7 @@ main {
 
 @media screen and (min-width: 450px) {
   main {
-    width: 660px;
+    width: 800px;
     height: 330px;
     border-radius: 5px;
   }
