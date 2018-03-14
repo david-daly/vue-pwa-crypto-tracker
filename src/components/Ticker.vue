@@ -19,7 +19,6 @@
         :headers="headers"
         :items="this.ticker.coins"
         hide-actions
-        dark
         class="elevation-1"
       >
         <template slot="items" slot-scope="props">
