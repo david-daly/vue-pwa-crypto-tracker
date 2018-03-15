@@ -53,6 +53,9 @@ export default {
     totalProfit () {
       return this.ticker.coins.reduce((coin, next) => coin + next.profit, 0)
     }
+  },
+  beforeDestroy () {
+    clearInterval(this.ticker.interval)
   }
 }
 </script>

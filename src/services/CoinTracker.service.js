@@ -8,6 +8,10 @@ class CoinTracker {
   constructor () {
     this.coins = []
     this.getCoinInfo()
+    this.interval = setInterval(
+      () => this.getCoinInfo(),
+      2.5 * 60 * 1000
+    )
   }
 
   getCoinInfo () {

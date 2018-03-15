@@ -56,6 +56,10 @@ export default {
         { text: 'Profit', value: 'profit' }
       ]
     }
+  },
+
+  beforeDestroy () {
+    clearInterval(this.ticker.interval)
   }
 }
 </script>
