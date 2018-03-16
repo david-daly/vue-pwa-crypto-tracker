@@ -9,7 +9,7 @@
         :profit="this.totalProfit"
       ></TotalProfit>
 
-      <div>
+      <div class="buttons">
           <v-btn flat small @click="getDataForCurrency('USD')">USD</v-btn>
           <v-btn flat small @click="getDataForCurrency('EUR')">EUR</v-btn>
       </div>
@@ -76,6 +76,15 @@ main {
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   color: rgba(255, 255, 255, 0.75);
 
+}
+
+.buttons {
+    border-top: 1px solid;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 30px;
 }
 
 @media screen and (min-width: 450px) {

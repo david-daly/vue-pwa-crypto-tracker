@@ -1,20 +1,5 @@
 <template>
     <main>
-      <!-- <div class="currencies">
-        <div>Symbol</div>
-        <div>Price</div>
-        <div>Bought</div>
-        <div>Current Amount</div>
-        <div>Profit</div>
-      </div>
-
-      <div class="currencies" v-for="coin of this.ticker.coins" :key="coin.id">
-        <div>{{coin.symbol}}</div>
-        <div>€{{coin.price_eur}}</div>
-        <div>€{{coin.boughtFor}}</div>
-        <div>€{{coin.currentAmount}}</div>
-        <div>€{{coin.profit}}</div>
-      </div> -->
       <v-data-table
         :headers="headers"
         :items="this.ticker.coins"
@@ -24,10 +9,10 @@
         <template slot="items" slot-scope="props">
           <td>{{ props.item.symbol }}</td>
           <td class="text-xs-right">{{ props.item.price_eur | round(2) }}</td>
-          <td class="text-xs-right">{{ props.item.boughtFor | round(2) }}</td>
           <td class="text-xs-right">{{ props.item.amount | round(2) }}</td>
+          <td class="text-xs-right">{{ props.item.boughtFor | round(2) }}</td>
           <td class="text-xs-right">{{ props.item.currentAmount | round(2) }}</td>
-          <td class="text-xs-right">{{ props.item.profit | round(2) }}</td>
+          <td class="text-xs-right">{{ props.item.profit | round(2) | negative}}</td>
         </template>
       </v-data-table>
     </main>
@@ -50,8 +35,8 @@ export default {
           value: 'symbol'
         },
         { text: 'Price (EUR)', value: 'price_eur' },
-        { text: 'Bought For', value: 'boughtFor' },
         { text: 'Amount Owned', value: 'amount' },
+        { text: 'Bought For', value: 'boughtFor' },
         { text: 'Current Value', value: 'currentAmount' },
         { text: 'Profit', value: 'profit' }
       ]

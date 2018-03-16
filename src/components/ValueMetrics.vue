@@ -31,10 +31,11 @@ export default {
 <style scoped>
 section {
   width: 100%;
-
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  border-bottom: 1px solid;
+  padding-bottom: 30px;
 }
 
 .totalBought img {
@@ -53,11 +54,13 @@ section {
 
 .totalValue__text {
   font-size: 2em;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(243, 71, 71, 0.75);
+  /* color: rgba(255, 255, 255, 0.75); */
 }
 
 .totalBought__text {
   font-size: 2em;
-  color: rgba(255, 255, 255, 0.75);
+  color: #42b983;
+  /* color: rgba(255, 255, 255, 0.75); */
 }
 </style>

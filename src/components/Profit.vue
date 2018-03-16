@@ -1,12 +1,14 @@
 <template>
+<div>
     <section>
-        <div class="totalProfit__value" :class="totalCSS">{{profit | round}}</div>
-            <div class="totalProfit__right">
-            <div class="totalProfit__arrow">
-                (<img src="../assets/icons/down.svg" alt="low temperature"><span>5%</span>)
-            </div>
-        </div>
+        <div class="totalProfit__value" :class="totalCSS">{{profit | round | negative}}</div>
     </section>
+    <div class="totalProfit__right">
+      <div class="totalProfit__arrow">
+          (<img src="../assets/icons/down.svg" alt="low temperature"><span>5%</span>)
+      </div>
+    </div>
+</div>
 </template>
 
 <script>
@@ -36,9 +38,11 @@ section {
 
 .totalProfit__right {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     color: rgba(255, 255, 255, 0.75);
+    font-size: 1.5em;
+    padding-top: 10px;
 }
 
 .totalProfit__arrow img {
