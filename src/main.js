@@ -23,6 +23,19 @@ Vue.filter('round', function (value, decimals) {
   return value
 })
 
+Vue.filter('negative', function (value) {
+  if (!value) {
+    return
+  }
+
+  if (value > 0) {
+    return value
+  }
+
+  value = `(${Math.abs(value)})`
+  return value
+})
+
 new Vue({
   router,
   render: h => h(App)
