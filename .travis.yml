@@ -18,4 +18,4 @@ scripts:
 
 after_success:
   # - nyc report --reporter=json > coverage/coverage.json
-  - sls deploy || exit 1
+  - npm run serverless:deploy || exit 1

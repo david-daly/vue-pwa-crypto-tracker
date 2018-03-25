@@ -8,7 +8,8 @@
     "build": "vue-cli-service build",
     "test": "vue-cli-service test",
     "lint": "vue-cli-service lint",
-    "serverless:package": "npm run build --prod  && serverless package --stage dev --package crypto-checker-dev && node archive-artifacts.js"
+    "serverless:package": "npm run build --prod  && serverless package --stage dev --package crypto-checker-dev && node archive-artifacts.js",
+    "serverless:deploy": "serverless deploy --stage=dev"
   },
   "dependencies": {
     "axios": "^0.18.0",
