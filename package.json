@@ -7,11 +7,14 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test": "vue-cli-service test",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "serverless:package": "npm run build --prod  && serverless package --stage dev --package crypto-checker-dev && node archive-artifacts.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "register-service-worker": "^1.0.0",
+    "serverless-s3-deploy": "^0.5.0",
+    "serverless-s3-remover": "^0.4.1",
     "vue": "^2.5.13",
     "vue-router": "^3.0.1",
     "vuetify": "^1.0.7"
@@ -24,6 +27,7 @@
     "@vue/cli-service": "^3.0.0-beta.6",
     "@vue/eslint-config-standard": "^3.0.0-beta.6",
     "@vue/test-utils": "^1.0.0-beta.10",
+    "archiver": "^2.1.1",
     "chai": "^4.1.2",
     "lint-staged": "^6.0.0",
     "node-sass": "^4.7.2",

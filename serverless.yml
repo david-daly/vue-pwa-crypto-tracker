@@ -1,0 +1,55 @@
+service: codePipeline-vue-pwa-crypto-checker
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  custom:
+    defaultStage: local
+  region: ${file(./serverless.${opt:stage, self:custom.defaultStage}.config.yml):region}
+  stackTags:
+    Environment: ${file(./serverless.${opt:stage, self:custom.defaultStage}.config.yml):environment_tag}
+
+resources:
+  Description: The CloudFormation Stack for the vue pwa crypto checker application
+  Resources:
+    CryptoCheckerCodeHosting:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${file(./serverless.${opt:stage, self:custom.defaultStage}.config.yml):s3BucketName_webapp_code}
+
+    CryptoCheckerCodeHostingPolicy:
+      Type: AWS::S3::BucketPolicy
+      Properties:
+        Bucket:
+          Ref: CryptoCheckerCodeHosting
+        PolicyDocument:
+          Statement:
+            - Sid: PublicReadGetObject
+              Effect: Allow
+              Principal: ${file(./serverless.${opt:stage, self:custom.defaultStage}.config.yml):s3BucketPolicy_cloudfront_origin_access_identity}
+              Action:
+              - s3:GetObject
+              Resource:
+                Fn::Join: [
+                  "", [
+                    "arn:aws:s3:::",
+                    { "Ref": "CryptoCheckerCodeHosting" },
+                    "/*"
+                  ]
+                ]
+
+plugins:
+  - serverless-s3-deploy
+  - serverless-s3-remover
+
+custom:
+  assets:
+    targets:
+      - bucket: ${file(./serverless.${opt:stage, self:custom.defaultStage}.config.yml):s3BucketName_webapp_code}
+        files:
+          - source: ./dist-${opt:stage, self:custom.defaultStage}
+            globs: '**/*'
+    auto: true
+  remover:
+     buckets:
+       - ${file(./serverless.${opt:stage, self:custom.defaultStage}.config.yml):s3BucketName_webapp_code}

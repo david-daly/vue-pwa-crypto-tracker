@@ -1,0 +1,13 @@
+{
+    "archiveDirectoryList": [
+       "crypot-checker-dev",
+        "dist/"
+    ],
+    "archiveFileList": [
+        "buildspec.yml",
+        "serverless.yml",
+        "serverless.config.dev.config.yml",
+        "package.json"
+    ],
+    "archiveName": "Crypto_Checker_Package.zip"
+}
